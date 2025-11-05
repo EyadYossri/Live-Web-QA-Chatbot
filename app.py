@@ -10,25 +10,21 @@ genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
 
 st.set_page_config(page_title="GPT Jr", page_icon="🌐", layout="wide")
 
-# Initialize chat history
 if "messages" not in st.session_state:
     st.session_state.messages = []
 
 st.title("🤖  GPT Jr  🤖")
 st.caption("Ask anything — I’ll search the web and answer with up-to-date info.")
 
-# --- Chat display ---
 for msg in st.session_state.messages:
     if msg["role"] == "user":
         st.chat_message("user").markdown(msg["content"])
     else:
         st.chat_message("assistant").markdown(msg["content"])
 
-# --- User input box (like ChatGPT) ---
 query = st.chat_input("Ask your question here...")
 
 if query:
-    # Show user message immediately
     st.chat_message("user").markdown(query)
     st.session_state.messages.append({"role": "user", "content": query})
 
@@ -73,11 +69,9 @@ if query:
                 response = model.generate_content(prompt)
                 answer = response.text if hasattr(response, "text") else "⚠️ No answer generated."
 
-                # --- Display answer ---
                 st.markdown(answer)
                 st.session_state.messages.append({"role": "assistant", "content": answer})
 
-                # --- Display sources below ---
                 if metas:
                     st.divider()
                     st.subheader("🔗 Sources")
