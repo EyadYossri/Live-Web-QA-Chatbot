@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="Demo/demo.gif" alt="Demo" width="600" />
+</p>
+
 # 🤖 GPT Jr — Web QA Chatbot (SerpApi + Pinecone + Gemini)
 
 GPT Jr is an intelligent web-based chatbot that combines **live web search**, **vector storage**, and **AI-powered responses** to deliver up-to-date, context-aware answers — just like ChatGPT, but with real-time information.
